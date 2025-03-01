@@ -1,6 +1,5 @@
 package com.saydullin.dobugapp.navigation
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -14,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -29,7 +27,6 @@ fun BottomNavigation() {
         NavigationItem("profile", "Профиль", Icons.Default.Person),
         NavigationItem("settings", "Настройки", Icons.Default.Settings),
     )
-    val context = LocalContext.current
 
     Scaffold(
         bottomBar = {

@@ -12,7 +12,7 @@ fun HomeScreen() {
 
     Box(
         modifier = Modifier
-            .padding(16.dp, 12.dp)
+            .padding(16.dp, 0.dp, 16.dp, 0.dp)
     ) {
         Posts()
     }

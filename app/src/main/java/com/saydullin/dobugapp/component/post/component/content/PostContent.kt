@@ -17,11 +17,11 @@ fun PostContent(
 
     Column(
         modifier = modifier
-            .padding(16.dp, 12.dp),
+            .padding(horizontal = 16.dp),
     ) {
         Text(
             text = content,
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
         )
     }
 

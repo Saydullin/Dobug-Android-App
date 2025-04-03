@@ -1,28 +1,33 @@
-package com.saydullin.dobugapp.component.list
+package com.saydullin.dobugapp.component.user
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.saydullin.dobugapp.component.post.Post
+import com.saydullin.dobugapp.component.user.component.UserPost
 
 @Composable
-fun Posts(modifier: Modifier = Modifier) {
+fun Users(
+    modifier: Modifier = Modifier
+) {
 
     val scrollState = rememberScrollState()
 
     Column(
         modifier = modifier
-            .verticalScroll(scrollState),
+            .verticalScroll(scrollState)
+            .padding(16.dp, 0.dp, 16.dp, 0.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Post()
-        Post()
-        Post()
-        Post()
-        Post()
+        UserPost()
+        UserPost()
+        UserPost()
+        UserPost()
+        UserPost()
     }
+
 }

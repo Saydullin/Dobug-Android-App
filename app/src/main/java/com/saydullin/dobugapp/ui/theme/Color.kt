@@ -2,10 +2,19 @@ package com.saydullin.dobugapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val LinkedBlue = Color(0xFF0A66C2)
+val TealAccent = Color(0xFF00B0A3)
+val ActionOrange = Color(0xFFFF6D00)
+val ErrorRed = Color(0xFFB00020)
+val SuccessGreen = Color(0xFF2E7D32)
+val DarkLinkedBlue = Color(0xFF63A4FF)
+val DarkWhite = Color(0xFFB0B0B0)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Нейтральные цвета
+val NeutralGray10 = Color(0xFF1A1A1A)
+val NeutralGray30 = Color(0xFF616161)
+val DarkThemeOutline = Color(0xFF616161)
+val LightThemeOutline = Color(0xFFBDBDBD)
+val LightBackground = Color(0xFFF5F5F5)
+val DarkBackground = Color(0xFF121212)
+val DarkSurface = Color(0xFF1E1E1E)

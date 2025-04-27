@@ -125,7 +125,7 @@ fun SignInScreen(
                    verticalAlignment = Alignment.CenterVertically
                ) {
                    Button(
-                       onClick = {}
+                       onClick = { navController.navigate(NavScreen.Home.route) }
                    ) {
                        Text(
                            text = "Готово"

@@ -124,7 +124,7 @@ fun SignUpScreen(
                Spacer(modifier = Modifier.height(36.dp))
                Row {
                    Button(
-                       onClick = {}
+                       onClick = { navController.navigate(NavScreen.Home.route) }
                    ) {
                        Text(
                            text = "Готово"

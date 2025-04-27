@@ -1,5 +1,6 @@
 package com.saydullin.dobugapp.navigation
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -8,7 +9,11 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
@@ -20,11 +25,13 @@ import com.saydullin.dobugapp.screen.auth.SignInScreen
 import com.saydullin.dobugapp.screen.auth.SignUpScreen
 import com.saydullin.dobugapp.screen.home.HomeScreen
 import com.saydullin.dobugapp.screen.newPost.NewPostScreen
+import com.saydullin.dobugapp.screen.profile.ProfileScreen
 import com.saydullin.dobugapp.util.NavScreen
 
 @Composable
 fun BottomNavigation() {
     val navController = rememberNavController()
+    val isNavigationBarEnable = remember { mutableStateOf(true) }
 
     val bottomScreens = listOf(
         NavScreen.Home,
@@ -47,9 +54,14 @@ fun BottomNavigation() {
         bottomBar = {
             val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
-            if (excludeScreens.contains(currentRoute)) return@Scaffold
+            isNavigationBarEnable.value = !excludeScreens.contains(currentRoute)
 
             NavigationBar(
+                modifier = Modifier
+                    .alpha(if (isNavigationBarEnable.value) 1f else 0f)
+                    .clickable(enabled = isNavigationBarEnable.value) {
+
+                    },
                 windowInsets = WindowInsets(left = 16.dp, right = 16.dp)
             ) {
                 screens.forEach { item ->
@@ -79,7 +91,7 @@ fun BottomNavigation() {
             composable(NavScreen.Chat.route) { Users() }
             composable(NavScreen.NewPost.route) { NewPostScreen() }
             composable(NavScreen.Shop.route) { Text("Магазин") }
-            composable(NavScreen.Profile.route) { Text("Профиль") }
+            composable(NavScreen.Profile.route) { ProfileScreen() }
 
             composable(NavScreen.SignUp.route) { SignUpScreen(navController) }
             composable(NavScreen.SignIn.route) { SignInScreen(navController) }

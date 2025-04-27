@@ -16,6 +16,7 @@ import com.saydullin.dobugapp.component.post.component.content.PostContent
 import com.saydullin.dobugapp.component.post.component.gallery.PostGallery
 import com.saydullin.dobugapp.component.post.component.header.PostHeader
 import com.saydullin.dobugapp.component.post.component.tag.PostTag
+import com.saydullin.dobugapp.component.user.component.reaction.UserReactionUI
 
 @Composable
 fun UserPost(
@@ -40,6 +41,8 @@ fun UserPost(
                 )
                 Spacer(Modifier.height(16.dp))
                 PostContent()
+                Spacer(Modifier.height(16.dp))
+                UserReactionUI()
                 Spacer(Modifier.height(16.dp))
             }
         }

@@ -2,12 +2,6 @@ package com.saydullin.dobugapp.navigation
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -22,27 +16,43 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.saydullin.dobugapp.component.user.Users
-import com.saydullin.dobugapp.screen.HomeScreen
+import com.saydullin.dobugapp.screen.auth.SignInScreen
+import com.saydullin.dobugapp.screen.auth.SignUpScreen
+import com.saydullin.dobugapp.screen.home.HomeScreen
+import com.saydullin.dobugapp.screen.newPost.NewPostScreen
+import com.saydullin.dobugapp.util.NavScreen
 
 @Composable
 fun BottomNavigation() {
     val navController = rememberNavController()
-    val pages = listOf(
-        NavigationItem("home", "Главная", Icons.Default.Home),
-        NavigationItem("profile", "Профиль", Icons.Default.Email),
-        NavigationItem("profiles", "Профиль", Icons.Default.Person),
-        NavigationItem("settingss", "Настройки", Icons.Default.ShoppingCart),
-        NavigationItem("settingsss", "Настройки", Icons.Default.Settings),
+
+    val bottomScreens = listOf(
+        NavScreen.Home,
+        NavScreen.Chat,
+        NavScreen.NewPost,
+        NavScreen.Shop,
+        NavScreen.Profile
+    )
+
+    val screens = bottomScreens.map {
+        NavigationItem(it.route, it.title, it.icon)
+    }
+
+    val excludeScreens = listOf(
+        NavScreen.SignUp.route,
+        NavScreen.SignIn.route
     )
 
     Scaffold(
         bottomBar = {
-            NavigationBar(
+            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
+            if (excludeScreens.contains(currentRoute)) return@Scaffold
+
+            NavigationBar(
                 windowInsets = WindowInsets(left = 16.dp, right = 16.dp)
             ) {
-                val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-                pages.forEach { item ->
+                screens.forEach { item ->
                     NavigationBarItem(
                         icon = { Icon(imageVector = item.icon, contentDescription = item.label) },
                         selected = currentRoute == item.route,
@@ -60,13 +70,19 @@ fun BottomNavigation() {
             }
         }
     ) { innerPadding ->
-        NavHost(navController, startDestination = "home", Modifier.padding(innerPadding)) {
-            composable("home") { HomeScreen() }
-            composable("profile") { Users() }
-            composable("profiles") { Text("Настройки") }
-            composable("settings") { Text("Настройки") }
-            composable("settingss") { Text("Настройки") }
-            composable("settingsss") { Text("Настройки") }
+        NavHost(
+            navController = navController,
+            startDestination = NavScreen.SignUp.route,
+            Modifier.padding(innerPadding)
+        ) {
+            composable(NavScreen.Home.route) { HomeScreen() }
+            composable(NavScreen.Chat.route) { Users() }
+            composable(NavScreen.NewPost.route) { NewPostScreen() }
+            composable(NavScreen.Shop.route) { Text("Магазин") }
+            composable(NavScreen.Profile.route) { Text("Профиль") }
+
+            composable(NavScreen.SignUp.route) { SignUpScreen(navController) }
+            composable(NavScreen.SignIn.route) { SignInScreen(navController) }
         }
     }
 }

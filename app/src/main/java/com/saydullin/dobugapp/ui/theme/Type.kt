@@ -41,14 +41,14 @@ val Typography = Typography(
         fontWeight = FontWeight.Bold,  // Roboto Bold
         fontSize = 32.sp,
         lineHeight = 40.sp,
-        letterSpacing = 0.sp
+        letterSpacing = 0.1.sp
     ),
     headlineMedium = TextStyle(
         fontFamily = fontFamilyRoboto,
         fontWeight = FontWeight.Bold,
         fontSize = 28.sp,
         lineHeight = 36.sp,
-        letterSpacing = 0.sp
+        letterSpacing = 0.1.sp
     ),
     headlineSmall = TextStyle(
         fontFamily = fontFamilyRoboto,

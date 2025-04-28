@@ -44,10 +44,10 @@ fun ProfileScreen() {
         "https://i.postimg.cc/59gg8CD6/2yearAch.jpg",
         "https://i.postimg.cc/gjgKpC3v/3yearAch.jpg",
         "https://i.postimg.cc/LXBTCYXQ/4yearAch.jpg",
+        "https://i.postimg.cc/kgzfBPzs/8yearAch.jpg",
         "https://i.postimg.cc/D0vctv4v/5yearAch.jpg",
         "https://i.postimg.cc/MT85mbWj/6yearAch.jpg",
         "https://i.postimg.cc/GpDzDS1C/7yearAch.jpg",
-        "https://i.postimg.cc/kgzfBPzs/8yearAch.jpg"
     )
 
     Column {
@@ -128,7 +128,12 @@ fun ProfileScreen() {
                     style = MaterialTheme.typography.headlineSmall
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                for (i in 0..53) {
+                Text(
+                    text = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                for (i in 1..3) {
                     CompanyItem()
                     Spacer(modifier = Modifier.height(8.dp))
                 }

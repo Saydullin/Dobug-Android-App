@@ -21,7 +21,7 @@ private val DarkColorScheme = darkColorScheme(
     onPrimary = Color.Black,
     onSecondary = Color.Black,
     onTertiary = Color.Black,
-    onBackground = Color.White,
+    onBackground = DarkOnBackground,
     onSurface = DarkWhite,
     onError = Color.White,
     surfaceVariant = NeutralGray30.copy(alpha = 0.2f),

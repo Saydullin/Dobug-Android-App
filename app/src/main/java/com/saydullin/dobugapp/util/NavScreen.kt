@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -32,10 +33,10 @@ sealed class NavScreen(
         icon = Icons.Default.Add,
     )
 
-    data object Shop: NavScreen(
-        title = "Магазин",
-        route = "shop",
-        icon = Icons.Default.ShoppingCart,
+    data object Notifications: NavScreen(
+        title = "Уведомления",
+        route = "notification",
+        icon = Icons.Default.Notifications,
     )
 
     data object Profile: NavScreen(

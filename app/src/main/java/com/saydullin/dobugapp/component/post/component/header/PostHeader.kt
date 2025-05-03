@@ -16,40 +16,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.saydullin.dobugapp.component.post.component.header.ui.PostHeaderContent
 import com.saydullin.dobugapp.component.post.component.header.ui.PostHeaderIcon
-import com.saydullin.dobugapp.component.post.component.header.ui.PostHeaderMenu
 
 @Composable
 fun PostHeader(
     modifier: Modifier = Modifier,
 ) {
 
-    Column(
-        modifier = Modifier
+    Row(
+        modifier = modifier
             .fillMaxWidth()
+            .padding(16.dp, 12.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(MaterialTheme.colorScheme.outline)
-        )
-        Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(16.dp, 12.dp)
-                .height(50.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            PostHeaderIcon(
-                modifier = Modifier.wrapContentWidth(Alignment.Start)
-            )
-            PostHeaderContent(
-                modifier = Modifier.weight(1f)
-            )
-            PostHeaderMenu(
-                modifier = Modifier.wrapContentWidth(Alignment.End)
-            )
-        }
+        PostHeaderIcon()
+        PostHeaderContent()
     }
 
 }

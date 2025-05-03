@@ -1,5 +1,6 @@
 package com.saydullin.dobugapp.screen.profile
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,11 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
@@ -34,57 +31,49 @@ import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import com.saydullin.dobugapp.component.company.CompanyItem
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProfileScreen() {
 
-    val verticalScrollState = rememberScrollState()
-
-    val achievements = listOf(
-        "https://i.postimg.cc/65Q0cQNz/1yearAch.jpg",
-        "https://i.postimg.cc/59gg8CD6/2yearAch.jpg",
-        "https://i.postimg.cc/gjgKpC3v/3yearAch.jpg",
-        "https://i.postimg.cc/LXBTCYXQ/4yearAch.jpg",
-        "https://i.postimg.cc/kgzfBPzs/8yearAch.jpg",
-        "https://i.postimg.cc/D0vctv4v/5yearAch.jpg",
-        "https://i.postimg.cc/MT85mbWj/6yearAch.jpg",
-        "https://i.postimg.cc/GpDzDS1C/7yearAch.jpg",
-    )
-
-    Column {
-        Row(
-            modifier = Modifier
-                .padding(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = "Сай",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(Modifier.weight(1f))
-            IconButton(
-                onClick = {}
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentPadding = PaddingValues(top = 50.dp)
+    ) {
+        stickyHeader {
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .background(MaterialTheme.colorScheme.background),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Icon(
-                    imageVector = Icons.Default.Settings,
-                    contentDescription = "settings"
+                Text(
+                    text = "Сай",
+                    style = MaterialTheme.typography.headlineMedium
                 )
+                Spacer(Modifier.weight(1f))
+                IconButton(
+                    onClick = {}
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Settings,
+                        contentDescription = "settings"
+                    )
+                }
             }
         }
-        Column(
-            modifier = Modifier
-                .verticalScroll(verticalScrollState)
-        ) {
-            Box(
+        item {
+            Row(
                 modifier = Modifier
-                    .padding(start = 16.dp)
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp),
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 val shape = RoundedCornerShape(50.dp)
 
                 Box(
                     modifier = Modifier
-                        .size(100.dp)
+                        .size(80.dp)
                         .clip(shape)
                         .background(MaterialTheme.colorScheme.background)
                         .zIndex(1f)
@@ -99,21 +88,55 @@ fun ProfileScreen() {
                             .clip(shape)
                     )
                 }
-                LazyRow(
+                Row(
                     modifier = Modifier
-                        .padding(start = 50.dp, top = 20.dp),
-                    contentPadding = PaddingValues(start = 60.dp, end = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    items(achievements) { item ->
-                        AsyncImage(
-                            modifier = Modifier
-                                .size(60.dp)
-                                .clip(RoundedCornerShape(50.dp)),
-                            model = item,
-                            contentDescription = "My image",
-                            contentScale = ContentScale.FillHeight,
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = "324",
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = "subscribers",
+                            style = MaterialTheme.typography.titleSmall
+                        )
+                    }
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = "18",
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = "likes",
+                            style = MaterialTheme.typography.titleSmall
+                        )
+                    }
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = "43",
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = "subscriptions",
+                            style = MaterialTheme.typography.titleSmall
                         )
                     }
                 }
@@ -125,13 +148,29 @@ fun ProfileScreen() {
             ) {
                 Text(
                     text = "Android Developer",
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.titleLarge
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
                     style = MaterialTheme.typography.bodyLarge
                 )
+                Spacer(modifier = Modifier.height(32.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "Experience",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "9 years",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
                 Spacer(modifier = Modifier.height(16.dp))
                 for (i in 1..3) {
                     CompanyItem()
@@ -140,5 +179,6 @@ fun ProfileScreen() {
             }
         }
     }
+
 
 }

@@ -31,36 +31,36 @@ val Typography = Typography(
     ),
     displaySmall = TextStyle(
         fontFamily = fontFamilyRoboto,
-        fontWeight = FontWeight.Medium,  // Roboto Medium
+        fontWeight = FontWeight.Normal,  // Roboto Medium
         fontSize = 36.sp,
         lineHeight = 44.sp,
         letterSpacing = 0.sp
     ),
     headlineLarge = TextStyle(
         fontFamily = fontFamilyRoboto,
-        fontWeight = FontWeight.Bold,  // Roboto Bold
+        fontWeight = FontWeight.Normal,  // Roboto Bold
         fontSize = 32.sp,
         lineHeight = 40.sp,
         letterSpacing = 0.1.sp
     ),
     headlineMedium = TextStyle(
         fontFamily = fontFamilyRoboto,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Normal,
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.1.sp
     ),
     headlineSmall = TextStyle(
         fontFamily = fontFamilyRoboto,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Normal,
         fontSize = 24.sp,
         lineHeight = 32.sp,
         letterSpacing = 0.sp
     ),
     titleLarge = TextStyle(
         fontFamily = fontFamilyRoboto,
-        fontWeight = FontWeight.Bold,
-        fontSize = 22.sp,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),

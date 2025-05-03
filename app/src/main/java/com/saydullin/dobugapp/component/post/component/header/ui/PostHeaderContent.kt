@@ -21,27 +21,19 @@ fun PostHeaderContent(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .fillMaxHeight()
             .padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text(
-            modifier = Modifier.weight(1f),
             text = "Anastasia Rose Matonite",
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.bodyLarge
         )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = "Project Manager in Science Solutions",
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
+        Text(
+            text = "Project Manager in Science Solutions",
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 
 }

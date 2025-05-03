@@ -23,7 +23,7 @@ fun PostReactionBar(
 ) {
     Row(
         modifier = modifier
-            .padding(horizontal = 16.dp)
+            .padding(16.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(5.dp)
     ) {

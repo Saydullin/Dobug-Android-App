@@ -13,7 +13,7 @@ val DarkWhite = Color(0xFFB0B0B0)
 // Нейтральные цвета
 val NeutralGray10 = Color(0xFF1A1A1A)
 val NeutralGray30 = Color(0xFF616161)
-val DarkThemeOutline = Color(0xFF616161)
+val DarkThemeOutline = Color(0xFF262626)
 val LightThemeOutline = Color(0xFFBDBDBD)
 val LightBackground = Color(0xFFF5F5F5)
 val DarkBackground = Color(0xFF121212)

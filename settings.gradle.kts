@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Dobug App"
 include(":app")
+include(":domain")
+include(":data")

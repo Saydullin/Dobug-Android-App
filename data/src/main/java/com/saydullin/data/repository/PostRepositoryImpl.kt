@@ -21,7 +21,7 @@ class PostRepositoryImpl @Inject constructor(
             val postsList = postsListRequest.execute()
 
             // TODO Обработать ошибку и статус
-            postsList.body()?.data ?: listOf()
+            postsList.body()?.data?.items ?: listOf()
         }
     }
 

@@ -176,6 +176,27 @@ fun ProfileScreen() {
                     CompanyItem()
                     Spacer(modifier = Modifier.height(8.dp))
                 }
+                Spacer(modifier = Modifier.height(32.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "Education",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = "6 years",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                for (i in 1..2) {
+                    CompanyItem()
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
             }
         }
     }

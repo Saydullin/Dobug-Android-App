@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -25,10 +26,12 @@ import com.saydullin.dobugapp.screen.newPost.NewPostScreen
 import com.saydullin.dobugapp.screen.notification.NotificationScreen
 import com.saydullin.dobugapp.screen.profile.ProfileScreen
 import com.saydullin.dobugapp.util.NavScreen
+import com.saydullin.dobugapp.viewmodel.PostViewModel
 
 @Composable
 fun BottomNavigation() {
     val navController = rememberNavController()
+    val postViewModel: PostViewModel = hiltViewModel()
     val isNavigationBarEnable = remember { mutableStateOf(true) }
 
     val bottomScreens = listOf(
@@ -82,7 +85,11 @@ fun BottomNavigation() {
             startDestination = NavScreen.SignUp.route,
             Modifier.padding(innerPadding)
         ) {
-            composable(NavScreen.Home.route) { HomeScreen() }
+            composable(NavScreen.Home.route) {
+                HomeScreen(
+                    postViewModel = postViewModel
+                )
+            }
             composable(NavScreen.Chat.route) { ChatScreen() }
             composable(NavScreen.NewPost.route) { NewPostScreen() }
             composable(NavScreen.Notifications.route) { NotificationScreen() }

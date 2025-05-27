@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -33,8 +35,11 @@ android {
 }
 
 dependencies {
-
     implementation(project(":domain"))
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.56.2")
+    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)

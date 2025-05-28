@@ -13,16 +13,21 @@ import com.saydullin.dobugapp.component.post.component.gallery.PostGallery
 import com.saydullin.dobugapp.component.post.component.header.PostHeader
 import com.saydullin.dobugapp.component.post.component.reaction.PostReactionBar
 import com.saydullin.dobugapp.component.post.component.tag.PostTag
+import com.saydullin.domain.model.post.PostPreview
 
 @Composable
-fun Post() {
+fun Post(
+    postPreview: PostPreview
+) {
 
     Column(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.background),
     ) {
         Column {
-            PostHeader()
+            PostHeader(
+                postPreview = postPreview
+            )
             PostGallery()
             PostTag(
                 title = "User Experience Testing"

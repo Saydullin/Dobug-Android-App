@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.saydullin.domain.model.author.Author
 
 @Composable
 fun PostHeaderContent(
     modifier: Modifier = Modifier,
+    postAuthor: Author,
 ) {
 
     Column(
@@ -25,13 +27,13 @@ fun PostHeaderContent(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text(
-            text = "Anastasia Rose Matonite",
+            text = postAuthor.getFullName(),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.bodyLarge
         )
         Text(
-            text = "Project Manager in Science Solutions",
+            text = postAuthor.bio,
             style = MaterialTheme.typography.bodyMedium
         )
     }

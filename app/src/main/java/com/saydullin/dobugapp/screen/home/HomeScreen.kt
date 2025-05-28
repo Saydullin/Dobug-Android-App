@@ -16,7 +16,7 @@ fun HomeScreen(
     }
 
     Box {
-        Posts()
+        Posts(postViewModel)
     }
 
 }

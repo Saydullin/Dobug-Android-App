@@ -7,4 +7,10 @@ data class Author(
     val username: String,
     val email: String,
     val bio: String,
-)
+) {
+
+    fun getFullName(): String {
+        return "$middleName $firstName $lastName".trim()
+    }
+
+}

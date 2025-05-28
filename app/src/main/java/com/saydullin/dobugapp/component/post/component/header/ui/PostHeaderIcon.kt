@@ -10,12 +10,14 @@ import coil.compose.AsyncImage
 
 @Composable
 fun PostHeaderIcon(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    authorImageUrl: String,
+    authorImageAlt: String,
 ) {
 
     AsyncImage(
-        model = "https://thispersondoesnotexist.com/",
-        contentDescription = "My image",
+        model = authorImageUrl,
+        contentDescription = authorImageAlt,
         modifier = modifier
             .size(50.dp)
             .clip(CircleShape)

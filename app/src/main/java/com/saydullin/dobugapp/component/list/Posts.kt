@@ -20,6 +20,7 @@ fun Posts(
 ) {
     val posts = postViewModel.posts.collectAsState()
     val postList = posts.value
+
     if (postList.isNullOrEmpty()) {
         Text(
             text = "Posts empty"

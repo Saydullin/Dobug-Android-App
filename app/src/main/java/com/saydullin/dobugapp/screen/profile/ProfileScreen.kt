@@ -30,10 +30,63 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import com.saydullin.dobugapp.component.company.CompanyItem
+import com.saydullin.dobugapp.model.company.CompanyUI
+import com.saydullin.dobugapp.screen.profile.component.ProfileExperience
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProfileScreen() {
+
+    val experienceList = listOf(
+        CompanyUI(
+            id = 1L,
+            title = "Google",
+            description = "Developed scalable Android apps, implemented MVVM architecture, and improved app performance by 30%",
+            duration = "3 years 2 months",
+            imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/25/360_F_391792593_BYfEk8FhvfNvXC5ERCw166qRFb8mYWya.jpg",
+            companyUrl = "https://www.google.com/"
+        ),
+        CompanyUI(
+            id = 2L,
+            title = "Facebook",
+            description = "Collaborated on Android SDK development, optimized UI rendering, and reduced app load time by 25%",
+            duration = "2 years 6 months",
+            imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/26/360_F_391792594_BYfEk8FhvfNvXC5ERCw166qRFb8mYWyb.jpg",
+            companyUrl = "https://www.google.com/"
+        ),
+        CompanyUI(
+            id = 3L,
+            title = "Amazon",
+            description = "Led the development of a new shopping feature in the Android app, increasing user engagement by 15%",
+            duration = "1 year 11 months",
+            imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/27/360_F_391792595_BYfEk8FhvfNvXC5ERCw166qRFb8mYWyc.jpg",
+            companyUrl = "https://www.google.com/"
+        ),
+        CompanyUI(
+            id = 4L,
+            title = "Netflix",
+            description = "Implemented offline viewing functionality, enhancing user experience and boosting retention rates",
+            duration = "1 year 3 months",
+            imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/28/360_F_391792596_BYfEk8FhvfNvXC5ERCw166qRFb8mYWyd.jpg",
+            companyUrl = "https://www.google.com/"
+        ),
+        CompanyUI(
+            id = 5L,
+            title = "Spotify",
+            description = "Optimized audio streaming on Android, reducing buffering times and improving playback stability",
+            duration = "2 years 1 month",
+            imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/29/360_F_391792597_BYfEk8FhvfNvXC5ERCw166qRFb8mYWye.jpg",
+            companyUrl = "https://www.google.com/"
+        ),
+        CompanyUI(
+            id = 6L,
+            title = "Uber",
+            description = "Developed real-time tracking features in the driver app, enhancing navigation accuracy and user trust",
+            duration = "1 year 8 months",
+            imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/30/360_F_391792598_BYfEk8FhvfNvXC5ERCw166qRFb8mYWyf.jpg",
+            companyUrl = "https://www.google.com/"
+        )
+    )
 
     LazyColumn(
         modifier = Modifier
@@ -156,26 +209,7 @@ fun ProfileScreen() {
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Spacer(modifier = Modifier.height(32.dp))
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = "Experience",
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Text(
-                        text = "9 years",
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                for (i in 1..3) {
-                    CompanyItem()
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
+                ProfileExperience(experienceList)
                 Spacer(modifier = Modifier.height(32.dp))
                 Row(
                     modifier = Modifier
@@ -193,10 +227,10 @@ fun ProfileScreen() {
                     )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                for (i in 1..2) {
-                    CompanyItem()
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
+//                for (i in 1..2) {
+//                    CompanyItem()
+//                    Spacer(modifier = Modifier.height(8.dp))
+//                }
             }
         }
     }

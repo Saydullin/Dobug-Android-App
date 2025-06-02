@@ -4,11 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -37,9 +35,10 @@ fun CompanyItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 16.dp)
             .background(MaterialTheme.colorScheme.background)
             .clickable {
-                val url = companyUI.companyUrl
+                val url = companyUI.url
                 val intent = Intent(Intent.ACTION_VIEW)
 
                 intent.data = Uri.parse(url)
@@ -49,7 +48,8 @@ fun CompanyItem(
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Row(
                 modifier = Modifier
@@ -58,7 +58,7 @@ fun CompanyItem(
             ) {
                 AsyncImage(
                     modifier = Modifier
-                        .size(25.dp)
+                        .size(30.dp)
                         .clip(RoundedCornerShape(20.dp)),
                     model = companyUI.imageUrl,
                     contentDescription = companyUI.title,
@@ -76,7 +76,6 @@ fun CompanyItem(
                     style = MaterialTheme.typography.titleSmall
                 )
             }
-            Spacer(Modifier.height(16.dp))
             Row {
                 Text(
                     modifier = Modifier

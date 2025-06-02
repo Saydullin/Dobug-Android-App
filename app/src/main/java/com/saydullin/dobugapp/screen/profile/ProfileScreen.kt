@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.saydullin.dobugapp.component.offlinePlaceholder.OfflinePlaceholder
 import com.saydullin.dobugapp.model.company.CompanyUI
 import com.saydullin.dobugapp.model.education.EducationUI
 import com.saydullin.dobugapp.screen.profile.component.ProfileDescription
@@ -158,7 +159,6 @@ fun ProfileScreen() {
         )
     )
 
-
     LazyColumn(
         modifier = Modifier
             .fillMaxSize(),
@@ -182,5 +182,6 @@ fun ProfileScreen() {
         }
     }
 
-
 }
+
+

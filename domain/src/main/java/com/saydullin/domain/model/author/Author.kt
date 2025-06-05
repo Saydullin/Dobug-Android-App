@@ -1,6 +1,7 @@
 package com.saydullin.domain.model.author
 
 data class Author(
+    val id: Long,
     val firstName: String,
     val middleName: String,
     val lastName: String,

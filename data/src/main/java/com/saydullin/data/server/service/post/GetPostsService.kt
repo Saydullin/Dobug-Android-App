@@ -2,7 +2,7 @@ package com.saydullin.data.server.service.post
 
 import com.saydullin.domain.model.main.Content
 import com.saydullin.domain.model.main.Pagination
-import com.saydullin.domain.model.post.PostPreview
+import com.saydullin.domain.model.post.Post
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,7 +13,7 @@ interface GetPostsService {
     fun getAllPosts(
         @Query("page") page: Int,
         @Query("pageLength") pageLength: Int,
-    ): Call<Content<Pagination<PostPreview>>>
+    ): Call<Content<Pagination<Post>>>
 
 }
 

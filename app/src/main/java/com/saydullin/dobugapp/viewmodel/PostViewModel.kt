@@ -3,7 +3,7 @@ package com.saydullin.dobugapp.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.saydullin.domain.model.post.PostPreview
+import com.saydullin.domain.model.post.Post
 import com.saydullin.domain.usecase.post.GetPostUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,8 +17,8 @@ class PostViewModel @Inject constructor(
     private val getPostUseCase: GetPostUseCase
 ): ViewModel() {
 
-    private val _posts = MutableStateFlow<List<PostPreview>?>(null)
-    val posts: StateFlow<List<PostPreview>?> = _posts
+    private val _posts = MutableStateFlow<List<Post>?>(null)
+    val posts: StateFlow<List<Post>?> = _posts
 
     fun getPosts() {
         viewModelScope.launch(Dispatchers.IO) {

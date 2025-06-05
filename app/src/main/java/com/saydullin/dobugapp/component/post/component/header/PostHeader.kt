@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.saydullin.dobugapp.component.post.component.header.ui.PostHeaderContent
 import com.saydullin.dobugapp.component.post.component.header.ui.PostHeaderIcon
-import com.saydullin.domain.model.post.PostPreview
+import com.saydullin.domain.model.post.Post
 
 @Composable
 fun PostHeader(
     modifier: Modifier = Modifier,
-    postPreview: PostPreview,
+    post: Post,
 ) {
 
     Row(
@@ -28,7 +28,7 @@ fun PostHeader(
             authorImageAlt = "profile image"
         )
         PostHeaderContent(
-            postAuthor = postPreview.author
+            postAuthor = post.author
         )
     }
 

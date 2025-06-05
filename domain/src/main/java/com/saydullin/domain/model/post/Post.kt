@@ -4,7 +4,7 @@ import com.saydullin.domain.model.author.Author
 import com.saydullin.domain.model.image.ImagePreview
 import com.saydullin.domain.model.tag.Tag
 
-data class PostPreview(
+data class Post(
     val id: Long,
     val content: String,
     val tags: List<Tag>,

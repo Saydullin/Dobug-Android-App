@@ -1,7 +1,7 @@
 package com.saydullin.data.di
 
-import com.saydullin.data.repository.PostRepositoryImpl
-import com.saydullin.domain.repository.PostRepository
+import com.saydullin.data.repository.PostServerRepositoryImpl
+import com.saydullin.domain.repository.post.PostServerRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindPostRepository(
-        postRepository: PostRepositoryImpl
-    ): PostRepository
+        postRepository: PostServerRepositoryImpl
+    ): PostServerRepository
 
 }

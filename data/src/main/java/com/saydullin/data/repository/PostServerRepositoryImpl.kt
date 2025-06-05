@@ -1,20 +1,20 @@
 package com.saydullin.data.repository
 
 import com.saydullin.data.server.service.post.GetPostsService
-import com.saydullin.domain.model.post.PostPreview
-import com.saydullin.domain.repository.PostRepository
+import com.saydullin.domain.model.post.Post
+import com.saydullin.domain.repository.post.PostServerRepository
 import com.saydullin.domain.util.resource.Resource
 import com.saydullin.domain.util.resource.Status
 import javax.inject.Inject
 
-class PostRepositoryImpl @Inject constructor(
+class PostServerRepositoryImpl @Inject constructor(
     private val getPostsService: GetPostsService
-): PostRepository {
+): PostServerRepository {
 
     override suspend fun getAllPost(
         page: Int,
         pageLength: Int
-    ): Resource<List<PostPreview>> {
+    ): Resource<List<Post>> {
         return Resource.tryWith(Status.PostServerError) {
             val postsListRequest = getPostsService.getAllPosts(page, pageLength)
 
@@ -25,7 +25,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPostById(postId: Long): Resource<PostPreview> {
+    override suspend fun getPostById(postId: Long): Resource<Post> {
         TODO("Not yet implemented")
     }
 

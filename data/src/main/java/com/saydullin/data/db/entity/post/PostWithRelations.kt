@@ -34,7 +34,7 @@ data class PostWithRelations(
         parentColumn = "author_id",
         entityColumn = "id"
     )
-    val author: AuthorEntity,
+    val author: AuthorEntity?,
 )
 
 

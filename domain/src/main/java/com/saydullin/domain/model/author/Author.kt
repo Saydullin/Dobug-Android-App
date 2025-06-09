@@ -10,6 +10,20 @@ data class Author(
     val bio: String,
 ) {
 
+    companion object {
+        fun getAnonymous(): Author {
+            return Author(
+                id = -1L,
+                "Anonymous",
+                "",
+                "",
+                "",
+                "",
+                ""
+            )
+        }
+    }
+
     fun getFullName(): String {
         return "$middleName $firstName $lastName".trim()
     }

@@ -9,8 +9,8 @@ import com.saydullin.data.db.entity.post.paging.RemoteKeysEntity
 @Dao
 interface RemoteKeysDao {
 
-    @Query("SELECT * FROM remote_keys WHERE userId = :userId")
-    fun remoteKeysUserId(userId: Long): RemoteKeysEntity?
+    @Query("SELECT * FROM remote_keys WHERE postId = :postId")
+    fun remoteKeysUserId(postId: Long): RemoteKeysEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(remoteKey: List<RemoteKeysEntity>)

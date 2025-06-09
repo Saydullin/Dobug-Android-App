@@ -16,7 +16,7 @@ import javax.inject.Inject
 class GetPostPagingSource @Inject constructor(
     private val postDao: PostDao,
     private val postMapper: PostRelationToPostMapper,
-    private val postRemoteMediator: PostRemoteMediator
+    private val postRemoteMediator: PostRemoteMediator,
 ) {
 
     @OptIn(ExperimentalPagingApi::class)
@@ -24,7 +24,9 @@ class GetPostPagingSource @Inject constructor(
         return Pager(
             config = PagingConfig(pageSize = 10),
             remoteMediator = postRemoteMediator,
-            pagingSourceFactory = { postDao.getAllPosts() }
+            pagingSourceFactory = {
+                postDao.getAllPosts()
+            }
         ).flow
             .map { pagingData ->
                 pagingData.map { postWithRelations ->

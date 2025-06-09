@@ -16,9 +16,7 @@ class PostServerRepositoryImpl @Inject constructor(
         pageLength: Int
     ): Resource<List<Post>> {
         return Resource.tryWithSuspend(Status.PostServerError) {
-            val postsListRequest = postService.getPosts(page, pageLength)
-
-            val postsList = postsListRequest.execute()
+            val postsList = postService.getPosts(page, pageLength)
 
             // TODO Обработать ошибку и статус
             postsList.body()?.data?.items ?: listOf()

@@ -4,6 +4,7 @@ import com.saydullin.data.db.entity.post.PostWithRelations
 import com.saydullin.data.db.mapper.Mapper
 import com.saydullin.data.db.mapper.author.AuthorEntityToAuthorMapper
 import com.saydullin.data.db.mapper.tag.TagEntityToTagMapper
+import com.saydullin.domain.model.author.Author
 import com.saydullin.domain.model.image.ImagePreview
 import com.saydullin.domain.model.post.Post
 import javax.inject.Inject
@@ -26,7 +27,7 @@ class PostRelationToPostMapper @Inject constructor(
             updatedAt = from.postEntity.updatedAt,
             status = from.postEntity.status,
             imagePreview = ImagePreview(0L, ""), // TODO Добавить отношение один ко многим
-            author = authorEntityToAuthorMapper.map(from.author)
+            author = if (from.author == null) Author.getAnonymous() else authorEntityToAuthorMapper.map(from.author)
         )
     }
 

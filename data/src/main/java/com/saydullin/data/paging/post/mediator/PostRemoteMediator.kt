@@ -47,10 +47,9 @@ class PostRemoteMediator @Inject constructor(
         }
 
         try {
-            val postsCall = postService.getPosts(page, state.config.pageSize)
-            val postsResponse = postsCall.execute()
+            val postsResponse = postService.getPosts(page, state.config.pageSize)
             val posts = postsResponse.body()?.data?.items ?: listOf()
-            val endOfPaginationReached = posts.isEmpty()
+            val endOfPaginationReached = posts.size < state.config.pageSize
 
             appDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
@@ -59,7 +58,7 @@ class PostRemoteMediator @Inject constructor(
                 }
                 val keys = posts.map {
                     RemoteKeysEntity(
-                        userId = it.id,
+                        postId = it.id,
                         prevKey = if (page == 1) null else page - 1,
                         nextKey = if (endOfPaginationReached) null else page + 1
                     )

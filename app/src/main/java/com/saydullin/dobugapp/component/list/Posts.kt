@@ -2,13 +2,17 @@ package com.saydullin.dobugapp.component.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -19,15 +23,10 @@ import com.saydullin.dobugapp.viewmodel.PostViewModel
 fun Posts(
     postViewModel: PostViewModel
 ) {
+    val context = LocalContext.current
     val posts = postViewModel.posts.collectAsLazyPagingItems()
 
-    if (posts.itemCount == 0) {
-        Text(
-            text = "Posts empty"
-        )
-
-        return
-    }
+    println("Постов получено ${posts.itemCount}")
 
     LazyColumn(
         modifier = Modifier
@@ -36,13 +35,22 @@ fun Posts(
         verticalArrangement = Arrangement.spacedBy(1.dp)
     ) {
         items(posts.itemCount) { index ->
-            posts[index]?.let { Post(it) }
+            val post = posts[index]
+            if (post != null) {
+                Post(post)
+            } else {
+                Box(modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .background(Color.Gray))
+            }
         }
 
         posts.apply {
             when {
                 loadState.refresh is LoadState.Loading -> item { CircularProgressIndicator() }
                 loadState.append is LoadState.Loading -> item { CircularProgressIndicator() }
+                loadState.append is LoadState.NotLoading  -> item { Text("Ну всё") }
                 loadState.append is LoadState.Error -> item { Text("Load Error") }
             }
         }

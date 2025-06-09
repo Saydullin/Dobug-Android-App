@@ -17,7 +17,7 @@ fun Slider(
             .fillMaxHeight(),
         model = imagesLinks[0],
         contentDescription = "My image",
-        contentScale = ContentScale.FillHeight,
+        contentScale = ContentScale.Crop,
     )
 
 }

@@ -17,4 +17,20 @@ object Status {
         override val description = ""
     }
 
+    object PostDatabaseSelectError: StatusResource {
+        override val code = 4
+        override val description = ""
+    }
+
+    object PostDatabaseInsertError: StatusResource {
+        override val code = 5
+        override val description = ""
+    }
+
+    object PostDatabaseDeleteError: StatusResource {
+        override val code = 6
+        override val description = ""
+    }
+
+
 }

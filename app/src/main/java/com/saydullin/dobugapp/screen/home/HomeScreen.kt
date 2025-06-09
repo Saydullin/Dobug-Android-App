@@ -11,10 +11,6 @@ fun HomeScreen(
     postViewModel: PostViewModel
 ) {
 
-    LaunchedEffect(Unit) {
-        postViewModel.getPosts()
-    }
-
     Box {
         Posts(postViewModel)
     }

@@ -1,6 +1,6 @@
 package com.saydullin.data.di
 
-import com.saydullin.data.server.service.post.GetPostsService
+import com.saydullin.data.server.service.post.PostService
 import com.saydullin.domain.config.Config
 import dagger.Module
 import dagger.Provides
@@ -25,8 +25,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGetPostService(retrofit: Retrofit): GetPostsService {
-        return retrofit.create(GetPostsService::class.java)
+    fun provideGetPostService(retrofit: Retrofit): PostService {
+        return retrofit.create(PostService::class.java)
     }
 
 }

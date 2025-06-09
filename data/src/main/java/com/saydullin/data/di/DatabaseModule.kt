@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.saydullin.data.db.AppDatabase
 import com.saydullin.data.db.dao.PostDao
+import com.saydullin.data.db.dao.RemoteKeysDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,6 +31,11 @@ object DatabaseModule {
     @Provides
     fun providePostDao(db: AppDatabase): PostDao {
         return db.getPostDao()
+    }
+
+    @Provides
+    fun provideRemoteKeysDao(db: AppDatabase): RemoteKeysDao {
+        return db.getRemoteKeysDao()
     }
 
 }

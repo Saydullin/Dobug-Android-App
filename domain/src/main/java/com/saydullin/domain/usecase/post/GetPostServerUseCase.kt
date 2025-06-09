@@ -4,7 +4,7 @@ import com.saydullin.domain.model.post.Post
 import com.saydullin.domain.repository.post.PostServerRepository
 import com.saydullin.domain.util.resource.Resource
 
-class GetPostUseCase(
+class GetPostServerUseCase(
     private val postServerRepository: PostServerRepository
 ) {
 

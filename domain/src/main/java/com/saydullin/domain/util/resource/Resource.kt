@@ -8,6 +8,7 @@ sealed class Resource<T>(
 ) {
 
     companion object {
+
         fun <T> tryWith(statusType: StatusResource, scope: () -> T): Resource<T> {
             return try {
                 Success(scope())
@@ -16,6 +17,7 @@ sealed class Resource<T>(
                 Error(e, statusType)
             }
         }
+
         suspend fun <T> tryWithSuspend(statusType: StatusResource, scope: suspend () -> T): Resource<T> {
             return try {
                 Success(scope())
@@ -24,6 +26,7 @@ sealed class Resource<T>(
                 Error(e, statusType)
             }
         }
+
     }
 
     suspend fun onSuspendError(scope: suspend (Error<Unit>) -> Unit): T? {

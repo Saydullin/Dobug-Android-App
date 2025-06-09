@@ -1,7 +1,7 @@
 package com.saydullin.data.di
 
 import com.saydullin.domain.repository.post.PostServerRepository
-import com.saydullin.domain.usecase.post.GetPostUseCase
+import com.saydullin.domain.usecase.post.GetPostServerUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +16,8 @@ object UseCaseModule {
     @Singleton
     fun bindGetPostUseCase(
         postServerRepository: PostServerRepository
-    ): GetPostUseCase {
-        return GetPostUseCase(
+    ): GetPostServerUseCase {
+        return GetPostServerUseCase(
             postServerRepository = postServerRepository
         )
     }

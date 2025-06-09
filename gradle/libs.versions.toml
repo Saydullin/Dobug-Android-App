@@ -16,6 +16,7 @@ navigationCompose = "2.7.6"
 jetbrainsKotlinJvm = "2.0.0"
 appcompat = "1.6.1"
 material = "1.10.0"
+pagingCompose = "3.3.6"
 retrofit = "2.9.0"
 roomRuntime = "2.7.1"
 
@@ -23,6 +24,8 @@ roomRuntime = "2.7.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }

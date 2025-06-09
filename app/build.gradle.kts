@@ -50,9 +50,12 @@ dependencies {
     implementation(libs.coil.compose)
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.56.2")
-    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
+    implementation(libs.androidx.room.paging)
+
+    implementation(libs.androidx.paging.compose)
 
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)

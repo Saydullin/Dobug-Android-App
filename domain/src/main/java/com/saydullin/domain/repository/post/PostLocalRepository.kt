@@ -5,12 +5,11 @@ import com.saydullin.domain.util.resource.Resource
 
 interface PostLocalRepository {
 
-    suspend fun getAllPost(
-        page: Int,
-        pageLength: Int
-    ): Resource<List<Post>>
-
     suspend fun getPostById(postId: Long): Resource<Post>
+
+    fun insert(posts: List<Post>): Resource<List<Long>>
+
+    fun clear(): Resource<Int>
 
 }
 

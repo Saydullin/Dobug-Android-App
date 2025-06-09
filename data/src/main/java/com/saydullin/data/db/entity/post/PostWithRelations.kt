@@ -1,12 +1,40 @@
 package com.saydullin.data.db.entity.post
 
-import com.saydullin.domain.model.author.Author
-import com.saydullin.domain.model.image.ImagePreview
-import com.saydullin.domain.model.tag.Tag
+import androidx.room.Embedded
+import androidx.room.Junction
+import androidx.room.Relation
+import com.saydullin.data.db.entity.author.AuthorEntity
+import com.saydullin.data.db.entity.media.MediaEntity
+import com.saydullin.data.db.entity.tag.TagEntity
 
 data class PostWithRelations(
+    @Embedded
     val postEntity: PostEntity,
-    val tags: List<Tag>,
-    val imagePreview: ImagePreview,
-    val author: Author,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "id",
+        associateBy = Junction(
+            value = PostTagEntity::class,
+            parentColumn = "postId",
+            entityColumn = "tagId",
+        )
+    )
+    val tags: List<TagEntity>,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "id",
+        associateBy = Junction(
+            value = PostMediaEntity::class,
+            parentColumn = "postId",
+            entityColumn = "mediaId",
+        )
+    )
+    val imagePreview: List<MediaEntity>,
+    @Relation(
+        parentColumn = "author_id",
+        entityColumn = "id"
+    )
+    val author: AuthorEntity,
 )
+
+

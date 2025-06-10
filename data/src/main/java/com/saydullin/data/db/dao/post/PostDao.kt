@@ -1,4 +1,4 @@
-package com.saydullin.data.db.dao
+package com.saydullin.data.db.dao.post
 
 import androidx.paging.PagingSource
 import androidx.room.Dao

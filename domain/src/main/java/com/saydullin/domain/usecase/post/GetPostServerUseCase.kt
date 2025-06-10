@@ -9,7 +9,7 @@ class GetPostServerUseCase(
 ) {
 
     suspend fun execute(page: Int, pageLength: Int): Resource<List<Post>> {
-        return postServerRepository.getAllPost(page, pageLength)
+        return postServerRepository.getPosts(page, pageLength)
     }
 
 }

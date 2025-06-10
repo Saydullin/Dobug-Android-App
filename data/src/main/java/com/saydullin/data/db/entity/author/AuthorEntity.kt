@@ -10,6 +10,7 @@ data class AuthorEntity(
     val middleName: String,
     val lastName: String,
     val username: String,
-    val email: String,
     val bio: String,
 )
+
+

@@ -5,11 +5,11 @@ import com.saydullin.data.db.mapper.Mapper
 import com.saydullin.domain.model.author.Author
 import javax.inject.Inject
 
-class AuthorEntityToAuthorMapper @Inject constructor(
-): Mapper<AuthorEntity, Author> {
+class AuthorToAuthorEntityMapper @Inject constructor(
+): Mapper<Author, AuthorEntity> {
 
-    override fun map(from: AuthorEntity): Author {
-        return Author(
+    override fun map(from: Author): AuthorEntity {
+        return AuthorEntity(
             id = from.id,
             firstName = from.firstName,
             middleName = from.middleName,

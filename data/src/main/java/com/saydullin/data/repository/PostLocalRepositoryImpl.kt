@@ -1,8 +1,15 @@
 package com.saydullin.data.repository
 
-import com.saydullin.data.db.dao.PostDao
+import com.saydullin.data.db.dao.author.AuthorDao
+import com.saydullin.data.db.dao.post.PostDao
+import com.saydullin.data.db.dao.postTag.PostTagDao
+import com.saydullin.data.db.dao.tag.TagDao
+import com.saydullin.data.db.mapper.author.AuthorToAuthorEntityMapper
 import com.saydullin.data.db.mapper.post.PostRelationToPostMapper
+import com.saydullin.data.db.mapper.post.PostTagToPostTagEntityMapper
 import com.saydullin.data.db.mapper.post.PostToPostEntityMapper
+import com.saydullin.data.db.mapper.tag.TagToTagEntityMapper
+import com.saydullin.data.model.post.PostTag
 import com.saydullin.domain.exception.DatabaseNotFound
 import com.saydullin.domain.model.post.Post
 import com.saydullin.domain.repository.post.PostLocalRepository
@@ -11,9 +18,15 @@ import com.saydullin.domain.util.resource.Status
 import javax.inject.Inject
 
 class PostLocalRepositoryImpl @Inject constructor(
+    private val tagDao: TagDao,
     private val postDao: PostDao,
+    private val authorDao: AuthorDao,
+    private val postTagDao: PostTagDao,
     private val postMapper: PostRelationToPostMapper,
     private val postEntityMapper: PostToPostEntityMapper,
+    private val tagToTagEntityMapper: TagToTagEntityMapper,
+    private val authorToAuthorEntityMapper: AuthorToAuthorEntityMapper,
+    private val postTagToPostTagEntityMapper: PostTagToPostTagEntityMapper,
 ): PostLocalRepository {
 
     override suspend fun getPostById(postId: Long): Resource<Post> {
@@ -26,9 +39,37 @@ class PostLocalRepositoryImpl @Inject constructor(
 
     override fun insert(posts: List<Post>): Resource<List<Long>> {
         return Resource.tryWith(Status.PostDatabaseInsertError) {
-            val postEntity = posts.map { postEntityMapper.map(it) }
 
-            postDao.insert(postEntity)
+            val tagEntityList = posts.flatMap { post ->
+                post.tags.map {
+                    tagToTagEntityMapper.map(it)
+                }
+            }
+            val postTagList = posts.flatMap { post ->
+                post.tags.map { tag ->
+                    PostTag(
+                        postId = post.id,
+                        tagId = tag.id
+                    )
+                }
+            }
+
+            val postEntity = posts.map { postEntityMapper.map(it) }
+            val authorEntity = posts.map { authorToAuthorEntityMapper.map(it.author) }
+            val postTagEntityList = postTagList.map { postTagToPostTagEntityMapper.map(it) }
+
+            var postInsert = listOf<Long>()
+            try {
+                // TODO Add error handler
+                authorDao.insert(authorEntity)
+                postInsert = postDao.insert(postEntity)
+                tagDao.insert(tagEntityList)
+                postTagDao.insert(postTagEntityList)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            postInsert
         }
     }
 

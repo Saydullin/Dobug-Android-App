@@ -6,9 +6,9 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.saydullin.data.db.AppDatabase
-import com.saydullin.data.db.dao.RemoteKeysDao
+import com.saydullin.data.db.dao.post.RemotePostKeysDao
 import com.saydullin.data.db.entity.post.PostWithRelations
-import com.saydullin.data.db.entity.post.paging.RemoteKeysEntity
+import com.saydullin.data.db.entity.post.paging.RemotePostKeysEntity
 import com.saydullin.data.server.service.post.PostService
 import com.saydullin.domain.repository.post.PostLocalRepository
 import retrofit2.HttpException
@@ -19,7 +19,7 @@ import javax.inject.Inject
 class PostRemoteMediator @Inject constructor(
     private val postLocalRepository: PostLocalRepository,
     private val postService: PostService,
-    private val remoteKeysDao: RemoteKeysDao,
+    private val remotePostKeysDao: RemotePostKeysDao,
     private val appDatabase: AppDatabase,
 ): RemoteMediator<Int, PostWithRelations>() {
 
@@ -53,17 +53,17 @@ class PostRemoteMediator @Inject constructor(
 
             appDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    remoteKeysDao.clear()
+                    remotePostKeysDao.clear()
                     postLocalRepository.clear()
                 }
                 val keys = posts.map {
-                    RemoteKeysEntity(
+                    RemotePostKeysEntity(
                         postId = it.id,
                         prevKey = if (page == 1) null else page - 1,
                         nextKey = if (endOfPaginationReached) null else page + 1
                     )
                 }
-                remoteKeysDao.insertAll(keys)
+                remotePostKeysDao.insertAll(keys)
                 postLocalRepository.insert(posts)
             }
             return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
@@ -74,20 +74,20 @@ class PostRemoteMediator @Inject constructor(
         }
     }
 
-    private fun getRemoteKeyForLastItem(state: PagingState<Int, PostWithRelations>): RemoteKeysEntity? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, PostWithRelations>): RemotePostKeysEntity? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
-            ?.let { user -> remoteKeysDao.remoteKeysUserId(user.postEntity.id) }
+            ?.let { user -> remotePostKeysDao.remoteKeysUserId(user.postEntity.id) }
     }
 
-    private fun getRemoteKeyForFirstItem(state: PagingState<Int, PostWithRelations>): RemoteKeysEntity? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, PostWithRelations>): RemotePostKeysEntity? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
-            ?.let { user -> remoteKeysDao.remoteKeysUserId(user.postEntity.id) }
+            ?.let { user -> remotePostKeysDao.remoteKeysUserId(user.postEntity.id) }
     }
 
-    private fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, PostWithRelations>): RemoteKeysEntity? {
+    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, PostWithRelations>): RemotePostKeysEntity? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.postEntity?.id?.let { userId ->
-                remoteKeysDao.remoteKeysUserId(userId)
+                remotePostKeysDao.remoteKeysUserId(userId)
             }
         }
     }

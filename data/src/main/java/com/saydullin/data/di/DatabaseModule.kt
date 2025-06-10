@@ -3,8 +3,11 @@ package com.saydullin.data.di
 import android.content.Context
 import androidx.room.Room
 import com.saydullin.data.db.AppDatabase
-import com.saydullin.data.db.dao.PostDao
-import com.saydullin.data.db.dao.RemoteKeysDao
+import com.saydullin.data.db.dao.author.AuthorDao
+import com.saydullin.data.db.dao.post.PostDao
+import com.saydullin.data.db.dao.post.RemotePostKeysDao
+import com.saydullin.data.db.dao.postTag.PostTagDao
+import com.saydullin.data.db.dao.tag.TagDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,8 +37,23 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideRemoteKeysDao(db: AppDatabase): RemoteKeysDao {
+    fun providePostTagDao(db: AppDatabase): PostTagDao {
+        return db.getPostTagDao()
+    }
+
+    @Provides
+    fun provideRemoteKeysDao(db: AppDatabase): RemotePostKeysDao {
         return db.getRemoteKeysDao()
+    }
+
+    @Provides
+    fun provideTagDao(db: AppDatabase): TagDao {
+        return db.getTagDao()
+    }
+
+    @Provides
+    fun provideAuthorDao(db: AppDatabase): AuthorDao {
+        return db.getAuthorDao()
     }
 
 }

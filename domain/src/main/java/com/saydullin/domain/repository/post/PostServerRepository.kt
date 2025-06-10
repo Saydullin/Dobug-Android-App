@@ -5,7 +5,7 @@ import com.saydullin.domain.util.resource.Resource
 
 interface PostServerRepository {
 
-    suspend fun getAllPost(
+    suspend fun getPosts(
         page: Int,
         pageLength: Int
     ): Resource<List<Post>>

@@ -6,7 +6,6 @@ data class Author(
     val middleName: String,
     val lastName: String,
     val username: String,
-    val email: String,
     val bio: String,
 ) {
 
@@ -19,7 +18,6 @@ data class Author(
                 "",
                 "",
                 "",
-                ""
             )
         }
     }

@@ -12,14 +12,10 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PostTag(
-    modifier: Modifier = Modifier,
     title: String,
 ) {
 
-    Box(
-        modifier = modifier
-            .padding(16.dp)
-    ) {
+    Box {
         AssistChip(
             modifier = Modifier
                 .height(24.dp),

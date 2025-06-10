@@ -11,7 +11,7 @@ class PostServerRepositoryImpl @Inject constructor(
     private val postService: PostService
 ): PostServerRepository {
 
-    override suspend fun getAllPost(
+    override suspend fun getPosts(
         page: Int,
         pageLength: Int
     ): Resource<List<Post>> {

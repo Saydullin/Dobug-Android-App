@@ -7,20 +7,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.saydullin.domain.model.post.Post
 
 @Composable
 fun PostContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    post: Post
 ) {
-
-    val content = "With 6 years of experience in project management, I've found that effective communication and collaboration are key to a successful team. One idea I have to improve our team's workflow is to implement regular, short stand-up meetings. These meetings would provide an opportunity for everyone to share their progress, discuss any obstacles, and align our goals for the day."
 
     Column(
         modifier = modifier
             .padding(horizontal = 16.dp),
     ) {
         Text(
-            text = content,
+            text = post.content,
             style = MaterialTheme.typography.bodyLarge,
         )
     }

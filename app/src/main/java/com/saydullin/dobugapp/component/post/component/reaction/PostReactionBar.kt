@@ -5,10 +5,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.ThumbUp
@@ -16,10 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.saydullin.dobugapp.component.post.component.reaction.ui.PostReaction
+import com.saydullin.dobugapp.util.formatNumbers
+import com.saydullin.domain.model.post.Post
 
 @Composable
 fun PostReactionBar(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    post: Post
 ) {
     Row(
         modifier = modifier
@@ -30,17 +29,17 @@ fun PostReactionBar(
         PostReaction(
             modifier = Modifier.weight(1f),
             icon = Icons.Outlined.ThumbUp,
-            title = "2.4K"
+            title = formatNumbers(post.likes)
         )
         PostReaction(
             modifier = Modifier.weight(1f),
             icon = Icons.Outlined.Email,
-            title = "455"
+            title = formatNumbers(post.comments)
         )
         PostReaction(
             modifier = Modifier.weight(1f),
             icon = Icons.Outlined.Refresh,
-            title = "2",
+            title = formatNumbers(post.reposts),
         )
     }
 }

@@ -30,8 +30,12 @@ fun Post(
                 title = "User Experience Testing"
             )
         }
-        PostContent()
-        PostReactionBar()
+        PostContent(
+            post = post
+        )
+        PostReactionBar(
+            post = post
+        )
 //        PostComment()
     }
 }

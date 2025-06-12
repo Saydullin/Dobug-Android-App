@@ -12,6 +12,11 @@ object Status {
         override val description = ""
     }
 
+    object UNAUTHORIZED: StatusResource {
+        override val code = 401
+        override val description = ""
+    }
+
     object PostServerError: StatusResource {
         override val code = 3
         override val description = ""

@@ -1,5 +1,6 @@
 package com.saydullin.dobugapp.navigation
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -7,11 +8,13 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -87,7 +90,8 @@ fun BottomNavigation() {
         ) {
             composable(NavScreen.Home.route) {
                 HomeScreen(
-                    postViewModel = postViewModel
+                    postViewModel = postViewModel,
+                    navController = navController,
                 )
             }
             composable(NavScreen.Chat.route) { ChatScreen() }

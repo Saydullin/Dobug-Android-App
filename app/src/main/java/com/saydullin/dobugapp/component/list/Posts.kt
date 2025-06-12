@@ -1,5 +1,6 @@
 package com.saydullin.dobugapp.component.list
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,21 +11,37 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.saydullin.dobugapp.component.post.Post
+import com.saydullin.dobugapp.util.NavScreen
 import com.saydullin.dobugapp.viewmodel.PostViewModel
 
 @Composable
 fun Posts(
-    postViewModel: PostViewModel
+    postViewModel: PostViewModel,
+    navController: NavController,
 ) {
-    val context = LocalContext.current
     val posts = postViewModel.posts.collectAsLazyPagingItems()
+    val postsError = postViewModel.error.collectAsState()
+    val context = LocalContext.current
+
+    if (postsError.value != null) {
+        Text(
+            text = "Что-то пошло не так"
+        )
+
+        Toast.makeText(context, "Авторизуйтесь", Toast.LENGTH_SHORT).show()
+
+        navController.navigate(NavScreen.SignIn.route)
+        return
+    }
 
     println("Постов получено ${posts.itemCount}")
 

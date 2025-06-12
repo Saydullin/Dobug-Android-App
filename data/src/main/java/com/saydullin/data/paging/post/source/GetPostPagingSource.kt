@@ -22,7 +22,7 @@ class GetPostPagingSource @Inject constructor(
     @OptIn(ExperimentalPagingApi::class)
     fun getPosts(): Flow<PagingData<Post>> {
         return Pager(
-            config = PagingConfig(pageSize = 10),
+            config = PagingConfig(pageSize = 20),
             remoteMediator = postRemoteMediator,
             pagingSourceFactory = {
                 postDao.getAllPosts()

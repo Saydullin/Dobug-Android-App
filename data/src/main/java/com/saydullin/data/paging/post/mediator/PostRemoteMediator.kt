@@ -11,6 +11,8 @@ import com.saydullin.data.db.entity.post.PostWithRelations
 import com.saydullin.data.db.entity.post.paging.RemotePostKeysEntity
 import com.saydullin.data.server.service.post.PostService
 import com.saydullin.domain.repository.post.PostLocalRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -22,6 +24,9 @@ class PostRemoteMediator @Inject constructor(
     private val remotePostKeysDao: RemotePostKeysDao,
     private val appDatabase: AppDatabase,
 ): RemoteMediator<Int, PostWithRelations>() {
+
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, PostWithRelations>): MediatorResult {
         val page = when (loadType) {
@@ -48,7 +53,16 @@ class PostRemoteMediator @Inject constructor(
 
         try {
             val postsResponse = postService.getPosts(page, state.config.pageSize)
-            val posts = postsResponse.body()?.data?.items ?: listOf()
+
+            if (!postsResponse.isSuccessful || postsResponse.body() == null) {
+                _error.value = "${postsResponse.code()}"
+
+                println("PostsRemoteMediator ${postsResponse.code()}")
+
+                return MediatorResult.Error(HttpException(postsResponse))
+            }
+
+            val posts = postsResponse.body()?.items ?: listOf()
             val endOfPaginationReached = posts.size < state.config.pageSize
 
             appDatabase.withTransaction {

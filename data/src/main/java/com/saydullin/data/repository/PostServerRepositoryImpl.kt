@@ -19,7 +19,7 @@ class PostServerRepositoryImpl @Inject constructor(
             val postsList = postService.getPosts(page, pageLength)
 
             // TODO Обработать ошибку и статус
-            postsList.body()?.data?.items ?: listOf()
+            postsList.body()?.items ?: listOf()
         }
     }
 

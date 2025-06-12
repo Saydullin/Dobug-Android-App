@@ -18,7 +18,7 @@ interface PostService {
     suspend fun getPosts(
         @Query("page") page: Int,
         @Query("pageLength") pageLength: Int,
-    ): Response<Content<Pagination<Post>>>
+    ): Response<Pagination<Post>>
 
     @Multipart
     @POST("createPost")

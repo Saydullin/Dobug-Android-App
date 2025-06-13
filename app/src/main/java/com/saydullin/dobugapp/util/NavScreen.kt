@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -55,6 +56,12 @@ sealed class NavScreen(
         title = "Авторизация",
         route = "signIn",
         icon = Icons.Default.Person
+    )
+
+    data object Splash: NavScreen(
+        title = "Заставка",
+        route = "splash",
+        icon = Icons.Default.KeyboardArrowUp
     )
 
 }

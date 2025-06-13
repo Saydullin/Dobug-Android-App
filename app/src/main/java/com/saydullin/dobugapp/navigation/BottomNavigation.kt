@@ -1,6 +1,5 @@
 package com.saydullin.dobugapp.navigation
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -8,13 +7,11 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -28,15 +25,18 @@ import com.saydullin.dobugapp.screen.home.HomeScreen
 import com.saydullin.dobugapp.screen.newPost.NewPostScreen
 import com.saydullin.dobugapp.screen.notification.NotificationScreen
 import com.saydullin.dobugapp.screen.profile.ProfileScreen
+import com.saydullin.dobugapp.screen.splash.SplashScreen
 import com.saydullin.dobugapp.util.NavScreen
 import com.saydullin.dobugapp.viewmodel.AuthViewModel
 import com.saydullin.dobugapp.viewmodel.PostViewModel
+import com.saydullin.dobugapp.viewmodel.SplashViewModel
 
 @Composable
 fun BottomNavigation() {
     val navController = rememberNavController()
     val postViewModel: PostViewModel = hiltViewModel()
     val authViewModel: AuthViewModel = hiltViewModel()
+    val splashViewModel: SplashViewModel = hiltViewModel()
     val isNavigationBarEnable = remember { mutableStateOf(true) }
 
     val bottomScreens = listOf(
@@ -52,8 +52,9 @@ fun BottomNavigation() {
     }
 
     val excludeScreens = listOf(
+        NavScreen.Splash.route,
         NavScreen.SignUp.route,
-        NavScreen.SignIn.route
+        NavScreen.SignIn.route,
     )
 
     Scaffold(
@@ -87,9 +88,15 @@ fun BottomNavigation() {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = NavScreen.SignUp.route,
+            startDestination = NavScreen.Splash.route,
             Modifier.padding(innerPadding)
         ) {
+            composable(NavScreen.Splash.route) {
+                SplashScreen(
+                    navController = navController,
+                    splashViewModel = splashViewModel,
+                )
+            }
             composable(NavScreen.Home.route) {
                 HomeScreen(
                     postViewModel = postViewModel,

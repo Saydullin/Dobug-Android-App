@@ -37,5 +37,19 @@ object Status {
         override val description = ""
     }
 
+    object LOGIN: StatusResource {
+        override val code = 7
+        override val description = ""
+    }
+
+    object SIGNUP: StatusResource {
+        override val code = 8
+        override val description = ""
+    }
+
+    object LOGOUT: StatusResource {
+        override val code = 9
+        override val description = ""
+    }
 
 }

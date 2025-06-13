@@ -29,12 +29,14 @@ import com.saydullin.dobugapp.screen.newPost.NewPostScreen
 import com.saydullin.dobugapp.screen.notification.NotificationScreen
 import com.saydullin.dobugapp.screen.profile.ProfileScreen
 import com.saydullin.dobugapp.util.NavScreen
+import com.saydullin.dobugapp.viewmodel.AuthViewModel
 import com.saydullin.dobugapp.viewmodel.PostViewModel
 
 @Composable
 fun BottomNavigation() {
     val navController = rememberNavController()
     val postViewModel: PostViewModel = hiltViewModel()
+    val authViewModel: AuthViewModel = hiltViewModel()
     val isNavigationBarEnable = remember { mutableStateOf(true) }
 
     val bottomScreens = listOf(
@@ -99,8 +101,18 @@ fun BottomNavigation() {
             composable(NavScreen.Notifications.route) { NotificationScreen() }
             composable(NavScreen.Profile.route) { ProfileScreen() }
 
-            composable(NavScreen.SignUp.route) { SignUpScreen(navController) }
-            composable(NavScreen.SignIn.route) { SignInScreen(navController) }
+            composable(NavScreen.SignUp.route) {
+                SignUpScreen(
+                    navController = navController,
+                    authViewModel = authViewModel,
+                )
+            }
+            composable(NavScreen.SignIn.route) {
+                SignInScreen(
+                    navController = navController,
+                    authViewModel = authViewModel,
+                )
+            }
         }
     }
 }

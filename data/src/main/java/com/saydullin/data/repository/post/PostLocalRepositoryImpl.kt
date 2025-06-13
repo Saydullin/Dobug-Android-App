@@ -1,4 +1,4 @@
-package com.saydullin.data.repository
+package com.saydullin.data.repository.post
 
 import com.saydullin.data.db.dao.author.AuthorDao
 import com.saydullin.data.db.dao.post.PostDao

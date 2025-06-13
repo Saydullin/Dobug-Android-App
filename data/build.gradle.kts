@@ -37,6 +37,9 @@ android {
 dependencies {
     implementation(project(":domain"))
 
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.preferences.core)
+
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)

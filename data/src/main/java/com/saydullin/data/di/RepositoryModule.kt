@@ -1,7 +1,9 @@
 package com.saydullin.data.di
 
-import com.saydullin.data.repository.PostLocalRepositoryImpl
-import com.saydullin.data.repository.PostServerRepositoryImpl
+import com.saydullin.data.repository.auth.AuthRepositoryImpl
+import com.saydullin.data.repository.post.PostLocalRepositoryImpl
+import com.saydullin.data.repository.post.PostServerRepositoryImpl
+import com.saydullin.domain.repository.auth.AuthRepository
 import com.saydullin.domain.repository.post.PostLocalRepository
 import com.saydullin.domain.repository.post.PostServerRepository
 import dagger.Binds
@@ -26,4 +28,12 @@ abstract class RepositoryModule {
         postServerRepository: PostLocalRepositoryImpl
     ): PostLocalRepository
 
+    @Binds
+    @Singleton
+    abstract fun bindAuthRepository(
+        authRepository: AuthRepositoryImpl
+    ): AuthRepository
+
 }
+
+

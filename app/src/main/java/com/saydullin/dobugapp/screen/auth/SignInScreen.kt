@@ -1,5 +1,6 @@
 package com.saydullin.dobugapp.screen.auth
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -23,26 +25,78 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.saydullin.dobugapp.model.auth.AuthState
 import com.saydullin.dobugapp.util.NavScreen
+import com.saydullin.dobugapp.viewmodel.AuthViewModel
+import com.saydullin.domain.model.author.AuthorLogin
 
 @Composable
 fun SignInScreen(
-    navController: NavController
+    navController: NavController,
+    authViewModel: AuthViewModel,
 ) {
     val usernameTextField = remember { mutableStateOf("") }
-    val emailTextField = remember { mutableStateOf("") }
     val passwordTextField = remember { mutableStateOf("") }
     val passwordVisible = remember { mutableStateOf(false) }
+
+    val authState = authViewModel.authState.collectAsState()
+
+    when(authState.value) {
+        AuthState.LOADING -> {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    CircularProgressIndicator()
+
+                    Spacer(Modifier.height(50.dp))
+
+                    Text(
+                        text = "Загрузка, проверка, авторизация ...",
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+
+            return
+        }
+        AuthState.SUCCESS_LOGIN -> {
+            val context = LocalContext.current
+
+            Toast.makeText(context, "Успешная авторизация", Toast.LENGTH_SHORT).show()
+
+            navController.navigate(NavScreen.Home.route)
+        }
+        AuthState.SUCCESS_SIGNUP -> {
+            val context = LocalContext.current
+
+            Toast.makeText(context, "Успешная регистрация", Toast.LENGTH_SHORT).show()
+
+            navController.navigate(NavScreen.Home.route)
+        }
+        else -> {
+
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -125,7 +179,14 @@ fun SignInScreen(
                    verticalAlignment = Alignment.CenterVertically
                ) {
                    Button(
-                       onClick = { navController.navigate(NavScreen.Home.route) }
+                       onClick = {
+                           val author = AuthorLogin(
+                               username = usernameTextField.value,
+                               password = passwordTextField.value,
+                           )
+
+                           authViewModel.login(author)
+                       }
                    ) {
                        Text(
                            text = "Готово"

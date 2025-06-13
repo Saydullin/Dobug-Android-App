@@ -15,11 +15,14 @@ class AuthInterceptor @Inject constructor(
 
         val requestBuilder = originalRequest.newBuilder()
 
+        println("token jwt $token")
+
         if (!token.isNullOrBlank()) {
             requestBuilder.addHeader("Authorization", "Bearer $token")
         }
 
         val request = requestBuilder.build()
+
         return chain.proceed(request)
     }
 

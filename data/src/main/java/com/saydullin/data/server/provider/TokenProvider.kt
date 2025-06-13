@@ -18,7 +18,7 @@ class TokenProvider @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             dataStore.getJwtKey()
                 .collect {
-                    _token.value = if (it.isNotBlank()) it else null
+                    _token.value = it.ifBlank { null }
                 }
         }
     }

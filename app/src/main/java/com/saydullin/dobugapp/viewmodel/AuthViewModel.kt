@@ -45,4 +45,10 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun resetState() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _authState.value = null
+        }
+    }
+
 }

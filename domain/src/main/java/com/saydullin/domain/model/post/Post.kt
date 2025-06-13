@@ -12,8 +12,8 @@ data class Post(
     val likes: Long,
     val reposts: Long,
     val comments: Long,
-    val createdAt: Long,
-    val updatedAt: Long,
+    val createdAt: String,
+    val updatedAt: String,
     val status: Int,
     val imagePreview: ImagePreview,
     val author: Author

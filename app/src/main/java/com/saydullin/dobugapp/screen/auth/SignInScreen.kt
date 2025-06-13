@@ -52,7 +52,16 @@ fun SignInScreen(
     val passwordTextField = remember { mutableStateOf("") }
     val passwordVisible = remember { mutableStateOf(false) }
 
+    val error = authViewModel.error.collectAsState()
     val authState = authViewModel.authState.collectAsState()
+
+    if (error.value != null) {
+        Text(
+            text = "Что-то пошло не так. ${error.value?.status}, ${error.value?.e}"
+        )
+
+        return
+    }
 
     when(authState.value) {
         AuthState.LOADING -> {
@@ -83,6 +92,8 @@ fun SignInScreen(
             val context = LocalContext.current
 
             Toast.makeText(context, "Успешная авторизация", Toast.LENGTH_SHORT).show()
+
+            authViewModel.resetState()
 
             navController.navigate(NavScreen.Home.route)
         }

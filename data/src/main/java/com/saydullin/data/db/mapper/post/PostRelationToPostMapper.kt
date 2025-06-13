@@ -23,8 +23,8 @@ class PostRelationToPostMapper @Inject constructor(
             likes = from.postEntity.likes,
             reposts = from.postEntity.reposts,
             comments = from.postEntity.comments,
-            createdAt = from.postEntity.createdAt,
-            updatedAt = from.postEntity.updatedAt,
+            createdAt = from.postEntity.createdAt.toString(),
+            updatedAt = from.postEntity.updatedAt.toString(),
             status = from.postEntity.status,
             imagePreview = ImagePreview(0L, ""), // TODO Добавить отношение один ко многим
             author = if (from.author == null) Author.getAnonymous() else authorEntityToAuthorMapper.map(from.author)

@@ -20,7 +20,6 @@ import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.saydullin.dobugapp.component.post.Post
-import com.saydullin.dobugapp.util.NavScreen
 import com.saydullin.dobugapp.viewmodel.PostViewModel
 
 @Composable
@@ -32,16 +31,16 @@ fun Posts(
     val postsError = postViewModel.error.collectAsState()
     val context = LocalContext.current
 
-    if (postsError.value != null) {
-        Text(
-            text = "Что-то пошло не так"
-        )
-
-        Toast.makeText(context, "Авторизуйтесь", Toast.LENGTH_SHORT).show()
-
-        navController.navigate(NavScreen.SignIn.route)
-        return
-    }
+//    if (postsError.value != null) {
+//        Text(
+//            text = "Что-то пошло не так"
+//        )
+//
+//        Toast.makeText(context, "Авторизуйтесь", Toast.LENGTH_SHORT).show()
+//
+//        navController.navigate(NavScreen.SignIn.route)
+//        return
+//    }
 
     println("Постов получено ${posts.itemCount}")
 

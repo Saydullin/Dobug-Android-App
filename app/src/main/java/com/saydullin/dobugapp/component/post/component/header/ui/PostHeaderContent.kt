@@ -34,7 +34,9 @@ fun PostHeaderContent(
         )
         Text(
             text = postAuthor.bio,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 

@@ -10,7 +10,7 @@ val SuccessGreen = Color(0xFF2E7D32)
 val DarkLinkedBlue = Color(0xFF63A4FF)
 val DarkWhite = Color(0xFFB0B0B0)
 
-val DarkPrimaryColor = Color(0xFF3F4659)
+val DarkPrimaryColor = Color(0xFF6189F3)
 
 val NeutralGray10 = Color(0xFF1A1A1A)
 val NeutralGray30 = Color(0xFF616161)

@@ -17,10 +17,10 @@ class PostRelationToPostMapper @Inject constructor(
 
     override fun map(from: PostWithRelations): Post {
 
-        val author = if (from.author != null) {
+        val author = if (from.author?.author != null) {
             val authorWithProfessionEntity = AuthorWithProfessionEntity(
-                author = from.author,
-                professions = from.professions
+                author = from.author.author,
+                professions = from.author.professions
             )
 
             authorWithProfessionEntityToAuthorMapper.map(authorWithProfessionEntity)

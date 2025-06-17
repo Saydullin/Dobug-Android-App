@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import com.saydullin.data.db.AppDatabase
 import com.saydullin.data.db.dao.author.AuthorDao
+import com.saydullin.data.db.dao.author.AuthorProfessionDao
 import com.saydullin.data.db.dao.post.PostDao
 import com.saydullin.data.db.dao.post.RemotePostKeysDao
 import com.saydullin.data.db.dao.postTag.PostTagDao
+import com.saydullin.data.db.dao.profession.ProfessionDao
 import com.saydullin.data.db.dao.tag.TagDao
 import dagger.Module
 import dagger.Provides
@@ -54,6 +56,16 @@ object DatabaseModule {
     @Provides
     fun provideAuthorDao(db: AppDatabase): AuthorDao {
         return db.getAuthorDao()
+    }
+
+    @Provides
+    fun provideProfessionDao(db: AppDatabase): ProfessionDao {
+        return db.getProfessionDao()
+    }
+
+    @Provides
+    fun provideAuthorProfessionDao(db: AppDatabase): AuthorProfessionDao {
+        return db.getAuthorProfessionDao()
     }
 
 }

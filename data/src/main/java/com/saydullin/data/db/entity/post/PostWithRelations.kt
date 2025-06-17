@@ -4,7 +4,9 @@ import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
 import com.saydullin.data.db.entity.author.AuthorEntity
+import com.saydullin.data.db.entity.author.AuthorProfessionEntity
 import com.saydullin.data.db.entity.media.MediaEntity
+import com.saydullin.data.db.entity.profession.ProfessionEntity
 import com.saydullin.data.db.entity.tag.TagEntity
 
 data class PostWithRelations(
@@ -35,6 +37,16 @@ data class PostWithRelations(
         entityColumn = "id"
     )
     val author: AuthorEntity?,
+    @Relation(
+        parentColumn = "author_id",
+        entityColumn = "id",
+        associateBy = Junction(
+            value = AuthorProfessionEntity::class,
+            parentColumn = "authorId",
+            entityColumn = "professionId"
+        )
+    )
+    val professions: List<ProfessionEntity>
 )
 
 

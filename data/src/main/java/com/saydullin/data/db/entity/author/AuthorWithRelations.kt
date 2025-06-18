@@ -9,7 +9,7 @@ data class AuthorWithRelations(
     @Embedded
     val author: AuthorEntity?,
     @Relation(
-        parentColumn = "author_id",
+        parentColumn = "id",
         entityColumn = "id",
         associateBy = Junction(
             value = AuthorProfessionEntity::class,

@@ -3,11 +3,11 @@ package com.saydullin.data.db.entity.author
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import androidx.room.PrimaryKey
 import com.saydullin.data.db.entity.profession.ProfessionEntity
 
 @Entity(
     tableName = "author_profession",
+    primaryKeys = ["authorId", "professionId"],
     foreignKeys = [
         ForeignKey(
             entity = AuthorEntity::class,
@@ -28,7 +28,6 @@ import com.saydullin.data.db.entity.profession.ProfessionEntity
     ]
 )
 data class AuthorProfessionEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val authorId: Long,
     val professionId: Long,
 )

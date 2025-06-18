@@ -34,6 +34,7 @@ data class PostWithRelations(
     )
     val imagePreview: List<MediaEntity>,
     @Relation(
+        entity = AuthorEntity::class,
         parentColumn = "author_id",
         entityColumn = "id"
     )

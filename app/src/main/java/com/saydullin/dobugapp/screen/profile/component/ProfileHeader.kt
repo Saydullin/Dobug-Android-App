@@ -14,9 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.saydullin.dobugapp.util.NavScreen
 
 @Composable
-fun ProfileHeader() {
+fun ProfileHeader(
+    navController: NavController
+) {
 
     Row(
         modifier = Modifier
@@ -30,7 +34,7 @@ fun ProfileHeader() {
         )
         Spacer(Modifier.weight(1f))
         IconButton(
-            onClick = {}
+            onClick = { navController.navigate(NavScreen.EditProfile.route) }
         ) {
             Icon(
                 imageVector = Icons.Default.Settings,

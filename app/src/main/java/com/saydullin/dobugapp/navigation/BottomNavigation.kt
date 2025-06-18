@@ -24,6 +24,7 @@ import com.saydullin.dobugapp.screen.chat.ChatScreen
 import com.saydullin.dobugapp.screen.home.HomeScreen
 import com.saydullin.dobugapp.screen.newPost.NewPostScreen
 import com.saydullin.dobugapp.screen.notification.NotificationScreen
+import com.saydullin.dobugapp.screen.profile.EditProfileScreen
 import com.saydullin.dobugapp.screen.profile.ProfileScreen
 import com.saydullin.dobugapp.screen.splash.SplashScreen
 import com.saydullin.dobugapp.util.NavScreen
@@ -106,8 +107,17 @@ fun BottomNavigation() {
             composable(NavScreen.Chat.route) { ChatScreen() }
             composable(NavScreen.NewPost.route) { NewPostScreen() }
             composable(NavScreen.Notifications.route) { NotificationScreen() }
-            composable(NavScreen.Profile.route) { ProfileScreen() }
 
+            composable(NavScreen.Profile.route) {
+                ProfileScreen(
+                    navController = navController,
+                )
+            }
+            composable(NavScreen.EditProfile.route) {
+                EditProfileScreen(
+                    navController = navController,
+                )
+            }
             composable(NavScreen.SignUp.route) {
                 SignUpScreen(
                     navController = navController,

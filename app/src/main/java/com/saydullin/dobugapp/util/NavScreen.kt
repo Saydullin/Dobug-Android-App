@@ -2,6 +2,7 @@ package com.saydullin.dobugapp.util
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -63,5 +64,13 @@ sealed class NavScreen(
         route = "splash",
         icon = Icons.Default.KeyboardArrowUp
     )
+
+    data object EditProfile: NavScreen(
+        title = "Изменение профиля",
+        route = "profileEdit",
+        icon = Icons.Default.Edit
+    )
+
+
 
 }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.saydullin.dobugapp.component.offlinePlaceholder.OfflinePlaceholder
 import com.saydullin.dobugapp.model.company.CompanyUI
 import com.saydullin.dobugapp.model.education.EducationUI
@@ -19,13 +20,15 @@ import com.saydullin.dobugapp.screen.profile.component.ProfileStatistics
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    navController: NavController,
+) {
 
     val experienceList = listOf(
         CompanyUI(
             id = 1L,
             title = "Google",
-            description = "Developed scalable Android apps, implemented MVVM architecture, and improved app performance by 30%",
+            description = "Developed scalable Android apps, implemented MVVM architecture, and improved app performance by 30%. Developed scalable Android apps, implemented MVVM architecture, and improved app performance by 30%",
             duration = "3 years 2 months",
             startedAt = "",
             endedAt = "",
@@ -166,7 +169,9 @@ fun ProfileScreen() {
         verticalArrangement = Arrangement.spacedBy(32.dp)
     ) {
         stickyHeader {
-            ProfileHeader()
+            ProfileHeader(
+                navController = navController
+            )
         }
         item {
             ProfileStatistics()

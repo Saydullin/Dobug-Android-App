@@ -68,7 +68,7 @@ fun ProfileStatistics() {
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "subscribers",
+                    text = "подписчиков",
                     style = MaterialTheme.typography.titleSmall
                 )
             }
@@ -83,7 +83,7 @@ fun ProfileStatistics() {
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "likes",
+                    text = "лайков",
                     style = MaterialTheme.typography.titleSmall
                 )
             }
@@ -98,7 +98,7 @@ fun ProfileStatistics() {
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "subscriptions",
+                    text = "подписок",
                     style = MaterialTheme.typography.titleSmall
                 )
             }

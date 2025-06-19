@@ -28,11 +28,11 @@ fun ProfileExperience(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Experience",
+            text = "Опыт",
             style = MaterialTheme.typography.titleMedium
         )
         Text(
-            text = "9 years",
+            text = "9 лет",
             style = MaterialTheme.typography.titleMedium
         )
     }

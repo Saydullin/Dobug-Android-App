@@ -18,12 +18,12 @@ fun ProfileDescription() {
             .padding(horizontal = 16.dp)
     ) {
         Text(
-            text = "Android Developer",
+            text = "Android разработчик",
             style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
+            text = "Опытный Android-разработчик с коммерческим опытом и глубоким пониманием архитектурных подходов, включая MVVM и Clean Architecture. Уверенно работаю с Kotlin и Java, использую современные инструменты: Jetpack Compose, Coroutines, Room, Hilt.",
             style = MaterialTheme.typography.bodyLarge
         )
     }

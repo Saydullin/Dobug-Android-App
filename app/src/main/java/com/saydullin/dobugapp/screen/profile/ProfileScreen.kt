@@ -28,8 +28,8 @@ fun ProfileScreen(
         CompanyUI(
             id = 1L,
             title = "Google",
-            description = "Developed scalable Android apps, implemented MVVM architecture, and improved app performance by 30%. Developed scalable Android apps, implemented MVVM architecture, and improved app performance by 30%",
-            duration = "3 years 2 months",
+            description = "Разрабатывал масштабируемые Android-приложения, внедрял архитектуру MVVM и повысил производительность приложений на 30%.\nИмею опыт работы с Kotlin, Jetpack Compose, Coroutines и внедрением зависимостей с помощью Hilt.\nСнижал утечки памяти и количество сбоев через профилирование и рефакторинг кода. Работал в кросс-функциональных командах и своевременно выпускал новые функции",
+            duration = "3 года 2 месяца",
             startedAt = "",
             endedAt = "",
             imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/25/360_F_391792593_BYfEk8FhvfNvXC5ERCw166qRFb8mYWya.jpg",
@@ -38,8 +38,8 @@ fun ProfileScreen(
         CompanyUI(
             id = 2L,
             title = "Facebook",
-            description = "Collaborated on Android SDK development, optimized UI rendering, and reduced app load time by 25%",
-            duration = "2 years 6 months",
+            description = "Участвовал в разработке Android SDK, оптимизировал отрисовку интерфейса и сократил время загрузки приложения на 25%. Создавал кастомные UI-компоненты с использованием Jetpack Compose и повышал эффективность рендеринга на устройствах с низкой производительностью. Внёс вклад в модульную архитектуру проекта для улучшения масштабируемости и поддержки.",
+            duration = "2 года 6 месяца",
             startedAt = "",
             endedAt = "",
             imageUrl = "https://t4.ftcdn.net/jpg/03/91/79/26/360_F_391792594_BYfEk8FhvfNvXC5ERCw166qRFb8mYWyb.jpg",

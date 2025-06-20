@@ -32,7 +32,7 @@ fun ProfileExperience(
             style = MaterialTheme.typography.titleMedium
         )
         Text(
-            text = "9 лет",
+            text = "12 лет и 7 месяцев",
             style = MaterialTheme.typography.titleMedium
         )
     }

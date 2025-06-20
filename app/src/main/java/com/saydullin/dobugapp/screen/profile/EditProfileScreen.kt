@@ -26,7 +26,7 @@ fun EditProfileScreen(
     Column {
         ScreenHeader(
             Icons.AutoMirrored.Filled.ArrowBack,
-            "Edit profile",
+            "Редактировать профиль",
             Icons.Default.Done,
             onClickLeftIcon = {
                 navController.popBackStack()

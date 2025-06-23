@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SearchBar
@@ -29,6 +30,7 @@ fun Search(
     Row {
         SearchBar(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(horizontal = paddingAnimation),
             windowInsets = WindowInsets(16.dp, 0.dp, 16.dp, 0.dp),
             query = searchText.value,

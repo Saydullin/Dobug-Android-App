@@ -31,7 +31,9 @@ fun Post(
             PostHeader(
                 post = post
             )
-            PostGallery()
+            PostGallery(
+                imagePreview = post.imagePreview
+            )
             FlowRow(
                 modifier = Modifier
                     .padding(16.dp),

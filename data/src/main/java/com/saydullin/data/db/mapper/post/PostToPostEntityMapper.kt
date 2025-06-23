@@ -20,7 +20,9 @@ class PostToPostEntityMapper @Inject constructor(
             createdAt = parseIsoDateToMillis(from.createdAt),
             updatedAt = parseIsoDateToMillis(from.updatedAt),
             status = from.status,
-            authorId = from.author.id
+            authorId = from.author.id,
+            imagePreviewId = from.imagePreview.id,
+            imagePreviewPath = from.imagePreview.imagePath ?: "",
         )
     }
 

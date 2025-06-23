@@ -16,6 +16,8 @@ data class PostEntity(
     @ColumnInfo("updated_at") val updatedAt: Long,
     @ColumnInfo("status") val status: Int,
     @ColumnInfo("author_id") val authorId: Long,
+    @ColumnInfo("image_preview_id") val imagePreviewId: Long,
+    @ColumnInfo("image_preview_path") val imagePreviewPath: String,
 )
 
 

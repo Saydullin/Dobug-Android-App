@@ -39,7 +39,10 @@ class PostRelationToPostMapper @Inject constructor(
             createdAt = from.postEntity.createdAt.toString(),
             updatedAt = from.postEntity.updatedAt.toString(),
             status = from.postEntity.status,
-            imagePreview = ImagePreview(0L, ""),
+            imagePreview = ImagePreview(
+                id = from.postEntity.imagePreviewId,
+                imagePath = from.postEntity.imagePreviewPath
+            ),
             author = author
         )
     }

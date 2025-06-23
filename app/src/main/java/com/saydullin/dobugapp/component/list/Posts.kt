@@ -66,7 +66,6 @@ fun Posts(
             when {
                 loadState.refresh is LoadState.Loading -> item { CircularProgressIndicator() }
                 loadState.append is LoadState.Loading -> item { CircularProgressIndicator() }
-                loadState.append is LoadState.NotLoading  -> item { Text("Ну всё") }
                 loadState.append is LoadState.Error -> item { Text("Load Error") }
             }
         }

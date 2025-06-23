@@ -17,7 +17,7 @@ fun PostGallery(
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp),
-        imagesLinks = listOf(imagePreview.imagePath ?: "")
+        imageLink = imagePreview.imagePath
     )
 //    LazyRow(
 //        modifier = Modifier

@@ -9,16 +9,18 @@ import coil.compose.AsyncImage
 @Composable
 fun Slider(
     modifier: Modifier = Modifier,
-    imagesLinks: List<String>,
+    imageLink: String?,
 ) {
 
-    AsyncImage(
-        modifier = modifier
-            .fillMaxHeight(),
-        model = imagesLinks[0],
-        contentDescription = "My image",
-        contentScale = ContentScale.Crop,
-    )
+    if (!imageLink.isNullOrEmpty()) {
+        AsyncImage(
+            modifier = modifier
+                .fillMaxHeight(),
+            model = imageLink,
+            contentDescription = "My image",
+            contentScale = ContentScale.Crop,
+        )
+    }
 
 }
 

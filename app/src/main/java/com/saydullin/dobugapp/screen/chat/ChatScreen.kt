@@ -68,8 +68,7 @@ fun ChatScreen() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .background(Color.Yellow),
+                    .padding(horizontal = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 ChatSearch(
@@ -77,6 +76,8 @@ fun ChatScreen() {
                         .weight(1f)
                 )
                 IconButton(
+                    modifier = Modifier
+                        .padding(top = 8.dp),
                     onClick = {  }
                 ) {
                     Icon(

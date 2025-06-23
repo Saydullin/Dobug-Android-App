@@ -43,7 +43,7 @@ fun Search(
             placeholder = {
                 Text(
                     text = "Поиск по username",
-                    color = MaterialTheme.colorScheme.outline
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             }
         ) { }

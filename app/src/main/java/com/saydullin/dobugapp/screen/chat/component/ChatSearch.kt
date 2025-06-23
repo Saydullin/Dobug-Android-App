@@ -15,8 +15,7 @@ fun ChatSearch(
 ) {
 
     Row(
-        modifier = modifier
-            .background(Color.Green),
+        modifier = modifier,
     ) {
         Search(
             horizontalPadding = 0.dp

@@ -18,6 +18,7 @@ class AuthorWithProfessionEntityToAuthorMapper @Inject constructor(
             lastName = from.author.lastName,
             username = from.author.username,
             bio = from.author.bio,
+            imagePath = from.author.imagePath,
             professions = from.professions.map { professionEntityToProfessionMapper.map(it) }
         )
     }

@@ -11,6 +11,7 @@ data class AuthorEntity(
     val lastName: String,
     val username: String,
     val bio: String,
+    val imagePath: String,
 )
 
 

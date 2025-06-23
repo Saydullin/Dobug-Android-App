@@ -16,6 +16,7 @@ class AuthorToAuthorEntityMapper @Inject constructor(
             lastName = from.lastName,
             username = from.username,
             bio = from.bio,
+            imagePath = from.imagePath ?: ""
         )
     }
 

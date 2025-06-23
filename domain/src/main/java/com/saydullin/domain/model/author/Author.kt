@@ -9,6 +9,7 @@ data class Author(
     val lastName: String,
     val username: String,
     val bio: String,
+    val imagePath: String?,
     val professions: List<Profession>
 ) {
 
@@ -17,6 +18,7 @@ data class Author(
             return Author(
                 id = -1L,
                 "Anonymous",
+                "",
                 "",
                 "",
                 "",

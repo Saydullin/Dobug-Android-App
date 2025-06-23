@@ -33,7 +33,7 @@ fun PostHeaderContent(
             style = MaterialTheme.typography.bodyLarge
         )
         Text(
-            text = postAuthor.professions.joinToString(", ") { it.title }.ifEmpty { postAuthor.bio },
+            text = postAuthor.professions.joinToString(", ") { it.title ?: "" }.ifEmpty { postAuthor.bio },
             style = MaterialTheme.typography.bodyMedium,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,

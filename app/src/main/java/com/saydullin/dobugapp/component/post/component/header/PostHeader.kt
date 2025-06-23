@@ -24,7 +24,7 @@ fun PostHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
         PostHeaderIcon(
-            authorImageUrl = "https://thispersondoesnotexist.com/",
+            authorImageUrl = post.author.imagePath ?: "",
             authorImageAlt = "profile image"
         )
         PostHeaderContent(

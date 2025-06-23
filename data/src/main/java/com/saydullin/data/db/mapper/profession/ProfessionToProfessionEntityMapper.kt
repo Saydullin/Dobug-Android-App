@@ -11,7 +11,7 @@ class ProfessionToProfessionEntityMapper @Inject constructor(
     override fun map(from: Profession): ProfessionEntity {
         return ProfessionEntity(
             id = from.id,
-            title = from.title
+            title = from.title ?: ""
         )
     }
 

@@ -17,9 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.saydullin.dobugapp.model.notification.Notification
 
 @Composable
-fun NotificationItem() {
+fun NotificationItem(
+    notification: Notification
+) {
 
     Box(
         modifier = Modifier
@@ -34,8 +37,8 @@ fun NotificationItem() {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             AsyncImage(
-                model = "https://thispersondoesnotexist.com/",
-                contentDescription = "My image",
+                model = notification.imageurl,
+                contentDescription = notification.title,
                 modifier = Modifier
                     .size(50.dp)
                     .clip(CircleShape)
@@ -46,16 +49,16 @@ fun NotificationItem() {
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(
-                    text = "Надежда Антипенко",
+                    text = notification.title,
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "Опубликовал(а) новый пост",
+                    text = notification.description,
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
             Text(
-                text = "2 мин",
+                text = notification.time,
                 style = MaterialTheme.typography.bodyLarge
             )
         }
